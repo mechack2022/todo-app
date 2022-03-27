@@ -15,7 +15,15 @@
   >
     Add
   </button>
+  <h2>
+    {{ allItems.length }}
+    <span *ngIf="allItems.length === 1; else elseBlock">item</span>
+    <ng-template #elseBlock>items</ng-template>
+  </h2>
+
   <ul>
-    <li *ngFor="let item of allItems">{{ item.description }}</li>
+    <li *ngFor="let item of allItems">
+      <app-item (remove)="removeItem(item)" [item]="item"></app-item>
+    </li>
   </ul>
 </div>
